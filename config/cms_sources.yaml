@@ -1,0 +1,30 @@
+# Confirmed CMS "Medicare Physician & Other Practitioners - by Provider and
+# Service" source locations, verified live against data.cms.gov and mirror
+# catalogs (data.virginia.gov / healthdata.gov) on 2026-08-10.
+#
+# `api` = data.cms.gov Data API endpoint (JSON, supports query params but in
+#         practice returns a fixed first page regardless of size/offset as of
+#         this writing -- do not rely on it for full-volume pulls).
+# `csv` = direct flat-file download, the recommended path for full ingestion.
+#
+# grain: one row per (rendering NPI, HCPCS code, place of service).
+
+dataset_name: "Medicare Physician & Other Practitioners - by Provider and Service"
+homepage: "https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider-and-service"
+methodology_pdf: "https://data.cms.gov/sites/default/files/2023-05/b4775e86-72aa-40de-b048-9d9fdad1cd09/MUP_PHY_RY23_20230509_Methology_508.pdf"
+update_frequency: "Annual"
+
+years:
+  2023:
+    api: "https://data.cms.gov/data-api/v1/dataset/92396110-2aed-4d63-a6a2-5d6207d46a29/data"
+    csv: "https://data.cms.gov/sites/default/files/2025-04/e3f823f8-db5b-4cc7-ba04-e7ae92b99757/MUP_PHY_R25_P05_V20_D23_Prov_Svc.csv"
+  2022:
+    csv: "https://data.cms.gov/sites/default/files/2025-11/53fb2bae-4913-48dc-a6d4-d8c025906567/MUP_PHY_R25_P05_V20_D22_Prov_Svc.csv"
+  2021:
+    csv: "https://data.cms.gov/sites/default/files/2025-11/bffaf97a-c2ab-4fd7-8718-be90742e3485/MUP_PHY_R25_P05_V20_D21_Prov_Svc.csv"
+  2020:
+    csv: "https://data.cms.gov/sites/default/files/2025-11/d22b18cd-7726-4bf5-8e9c-3e4587c589a1/MUP_PHY_R25_P05_V20_D20_Prov_Svc.csv"
+  2019:
+    csv: "https://data.cms.gov/sites/default/files/2025-11/7befba27-752e-47a8-a76c-6c6d4f74f2e3/MUP_PHY_R25_P04_V20_D19_Prov_Svc.csv"
+  2018:
+    csv: "https://data.cms.gov/sites/default/files/2025-11/5669eafb-f0b3-4dc5-be6d-abc09b480c2e/MUP_PHY_R25_P04_V20_D18_Prov_Svc.csv"
