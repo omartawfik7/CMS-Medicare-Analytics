@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "854c6f98-f35c-4255-89f1-08475bc35f92",
+  "position": {
+    "x": 520,
+    "y": 480,
+    "z": 0,
+    "width": 240,
+    "height": 200,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Relative Cost Ratio"
+                }
+              },
+              "queryRef": "fact_provider_year.Relative Cost Ratio",
+              "nativeQueryRef": "Relative Cost Ratio"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

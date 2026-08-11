@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "76ff45de-85d5-455c-8e4f-f82d102409cd",
+  "position": {
+    "x": 40,
+    "y": 210,
+    "z": 0,
+    "width": 220,
+    "height": 130,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Payment per Service"
+                }
+              },
+              "queryRef": "fact_provider_year.Payment per Service",
+              "nativeQueryRef": "Payment per Service"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

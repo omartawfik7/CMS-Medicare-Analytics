@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6147d0c9-35c3-415a-acf6-07a5eb599e89",
+  "position": {
+    "x": 0,
+    "y": 250,
+    "z": 0,
+    "width": 400,
+    "height": 25,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Model 2 -- High-Cost Provider Classification",
+                    "textStyle": {
+                      "fontSize": "15px",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

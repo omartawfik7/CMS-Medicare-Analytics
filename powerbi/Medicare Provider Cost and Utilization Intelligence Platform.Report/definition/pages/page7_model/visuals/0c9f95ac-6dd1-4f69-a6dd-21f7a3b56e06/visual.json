@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0c9f95ac-6dd1-4f69-a6dd-21f7a3b56e06",
+  "position": {
+    "x": 410,
+    "y": 280,
+    "z": 0,
+    "width": 195,
+    "height": 110,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_model_metrics"
+                    }
+                  },
+                  "Property": "Model 2 F1"
+                }
+              },
+              "queryRef": "dim_model_metrics.Model 2 F1",
+              "nativeQueryRef": "Model 2 F1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

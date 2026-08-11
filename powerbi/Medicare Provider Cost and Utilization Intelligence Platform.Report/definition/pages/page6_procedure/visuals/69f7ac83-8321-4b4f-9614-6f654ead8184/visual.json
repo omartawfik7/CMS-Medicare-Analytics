@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "69f7ac83-8321-4b4f-9614-6f654ead8184",
+  "position": {
+    "x": 580,
+    "y": 50,
+    "z": 0,
+    "width": 710,
+    "height": 150,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_hcpcs"
+                    }
+                  },
+                  "Property": "hcpcs_code"
+                }
+              },
+              "queryRef": "dim_hcpcs.hcpcs_code",
+              "nativeQueryRef": "hcpcs_code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_hcpcs"
+                    }
+                  },
+                  "Property": "hcpcs_description"
+                }
+              },
+              "queryRef": "dim_hcpcs.hcpcs_description",
+              "nativeQueryRef": "hcpcs_description"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_procedure_year"
+                    }
+                  },
+                  "Property": "Procedure Total Payments"
+                }
+              },
+              "queryRef": "fact_procedure_year.Procedure Total Payments",
+              "nativeQueryRef": "Procedure Total Payments"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_procedure_year"
+                    }
+                  },
+                  "Property": "Procedure Total Services"
+                }
+              },
+              "queryRef": "fact_procedure_year.Procedure Total Services",
+              "nativeQueryRef": "Procedure Total Services"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_procedure_year"
+                    }
+                  },
+                  "Property": "Procedure Provider Count"
+                }
+              },
+              "queryRef": "fact_procedure_year.Procedure Provider Count",
+              "nativeQueryRef": "Procedure Provider Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_procedure_year"
+                    }
+                  },
+                  "Property": "Procedure Payment per Service"
+                }
+              },
+              "queryRef": "fact_procedure_year.Procedure Payment per Service",
+              "nativeQueryRef": "Procedure Payment per Service"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Procedure Detail'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

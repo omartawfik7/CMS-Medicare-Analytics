@@ -1,0 +1,31 @@
+table dim_hcpcs
+	lineageTag: 057c1d0e-f53a-4d61-8c6a-9cce6ce4dda0
+
+	column hcpcs_code
+		dataType: string
+		lineageTag: 87c4afb7-2a7e-45e5-8a1b-af16fab48702
+		summarizeBy: none
+		sourceColumn: hcpcs_code
+
+	column hcpcs_description
+		dataType: string
+		lineageTag: 47992116-3d35-495d-88fd-f43cda391594
+		summarizeBy: none
+		sourceColumn: hcpcs_description
+
+	column is_drug_code
+		dataType: boolean
+		lineageTag: eec0684c-8dcc-45dd-966b-f6765bde0d19
+		summarizeBy: none
+		sourceColumn: is_drug_code
+
+	partition dim_hcpcs = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "dim_hcpcs.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

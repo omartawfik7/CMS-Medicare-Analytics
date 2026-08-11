@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8c08b5c7-baaf-4c23-b3c9-024b546ec837",
+  "position": {
+    "x": 770,
+    "y": 480,
+    "z": 0,
+    "height": 200,
+    "width": 510,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "rendering_npi"
+                }
+              },
+              "queryRef": "fact_provider_year.rendering_npi",
+              "nativeQueryRef": "rendering_npi",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Payment per Beneficiary"
+                }
+              },
+              "queryRef": "fact_provider_year.Payment per Beneficiary",
+              "nativeQueryRef": "Payment per Beneficiary",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Specialty Percentile Rank"
+                }
+              },
+              "queryRef": "fact_provider_year.Specialty Percentile Rank",
+              "nativeQueryRef": "Specialty Percentile Rank"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Peer Comparison: Payment per Beneficiary vs. Percentile'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

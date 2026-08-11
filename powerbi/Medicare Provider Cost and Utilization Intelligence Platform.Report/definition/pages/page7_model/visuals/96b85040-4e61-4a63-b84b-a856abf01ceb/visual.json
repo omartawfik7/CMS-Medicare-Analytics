@@ -1,0 +1,129 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "96b85040-4e61-4a63-b84b-a856abf01ceb",
+  "position": {
+    "x": 0,
+    "y": 410,
+    "z": 0,
+    "width": 1280,
+    "height": 270,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_provider"
+                    }
+                  },
+                  "Property": "provider_name"
+                }
+              },
+              "queryRef": "dim_provider.provider_name",
+              "nativeQueryRef": "provider_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_model_predictions"
+                    }
+                  },
+                  "Property": "source_year"
+                }
+              },
+              "queryRef": "fact_model_predictions.source_year",
+              "nativeQueryRef": "source_year"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_model_predictions"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "fact_model_predictions.model",
+              "nativeQueryRef": "model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_model_predictions"
+                    }
+                  },
+                  "Property": "actual_value"
+                }
+              },
+              "queryRef": "fact_model_predictions.actual_value",
+              "nativeQueryRef": "actual_value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_model_predictions"
+                    }
+                  },
+                  "Property": "predicted_value"
+                }
+              },
+              "queryRef": "fact_model_predictions.predicted_value",
+              "nativeQueryRef": "predicted_value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_model_predictions"
+                    }
+                  },
+                  "Property": "predicted_probability"
+                }
+              },
+              "queryRef": "fact_model_predictions.predicted_probability",
+              "nativeQueryRef": "predicted_probability"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sample Predictions (Test Year)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

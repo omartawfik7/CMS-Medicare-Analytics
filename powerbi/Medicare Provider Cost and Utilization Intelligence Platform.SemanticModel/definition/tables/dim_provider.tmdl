@@ -1,0 +1,83 @@
+table dim_provider
+	lineageTag: 825c41e6-f5b5-4912-a038-521760c241e8
+
+	column rendering_npi
+		dataType: string
+		lineageTag: b799c77e-dc46-42c8-b0a7-7dd4ceec2c13
+		summarizeBy: none
+		sourceColumn: rendering_npi
+
+	column provider_name
+		dataType: string
+		lineageTag: 0caac9a2-34db-43ee-b903-792bb1809375
+		summarizeBy: none
+		sourceColumn: provider_name
+
+	column provider_entity_type
+		dataType: string
+		lineageTag: f7e5f1bc-81d0-4331-bfb5-a8629e9b3ad8
+		summarizeBy: none
+		sourceColumn: provider_entity_type
+
+	column provider_specialty
+		dataType: string
+		lineageTag: f57e4b9e-545d-46e6-ad1b-c81c8442db61
+		summarizeBy: none
+		sourceColumn: provider_specialty
+
+	column provider_state
+		dataType: string
+		lineageTag: e83983db-326c-4747-81ed-3298285314bb
+		summarizeBy: none
+		sourceColumn: provider_state
+
+	column provider_zip5
+		dataType: string
+		lineageTag: 38f353d9-7d75-45a7-a678-eaa9a79f1d51
+		dataCategory: PostalCode
+		summarizeBy: none
+		sourceColumn: provider_zip5
+
+	column provider_ruca_code
+		dataType: double
+		formatString: 0.0
+		lineageTag: 007e5be4-89b2-44ad-ba9c-f32233692558
+		summarizeBy: none
+		sourceColumn: provider_ruca_code
+
+	column provider_ruca_desc
+		dataType: string
+		lineageTag: 0c9883ee-f465-4a8a-a0ae-f00b05b44768
+		summarizeBy: none
+		sourceColumn: provider_ruca_desc
+
+	column is_medicare_participating_latest
+		dataType: boolean
+		lineageTag: 1fccc737-1aeb-49f6-ad01-ef15e47d151f
+		summarizeBy: none
+		sourceColumn: is_medicare_participating_latest
+
+	column first_observed_year
+		dataType: int64
+		formatString: 0
+		lineageTag: e8c65f68-2822-4177-80a6-707ccd250952
+		summarizeBy: none
+		sourceColumn: first_observed_year
+
+	column last_observed_year
+		dataType: int64
+		formatString: 0
+		lineageTag: b28bb86e-6b03-4698-bc07-fe6c96dc4da4
+		summarizeBy: none
+		sourceColumn: last_observed_year
+
+	partition dim_provider = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "dim_provider.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

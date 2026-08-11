@@ -1,0 +1,130 @@
+table fact_specialty_year
+	lineageTag: 3b1a3c78-8c0d-426e-a2cc-adbb398994ed
+
+	measure 'Specialty Total Payments' = SUM(fact_specialty_year[specialty_total_medicare_payment])
+		formatString: \$#,0
+		displayFolder: Specialty
+		lineageTag: 9ace7f57-37ce-42e0-b9d3-21049f18aea6
+
+	measure 'Specialty Provider Count' = SUM(fact_specialty_year[provider_count])
+		formatString: #,0
+		displayFolder: Specialty
+		lineageTag: c462c103-369d-4548-b808-ddac085cc0c3
+
+	measure 'Specialty Share of National Spend' = AVERAGE(fact_specialty_year[specialty_share_of_national_spend])
+		formatString: 0.0%
+		displayFolder: Specialty
+		lineageTag: d188d159-74c7-4ff6-ad46-14716cb89802
+
+	measure 'Specialty Payment per Provider' = DIVIDE([Specialty Total Payments], [Specialty Provider Count])
+		formatString: \$#,0
+		displayFolder: Specialty
+		lineageTag: b4eb5b91-04cf-4e95-9cb0-51cc61623fdb
+
+	column provider_specialty
+		dataType: string
+		lineageTag: 580163d4-0aff-420d-94e2-c0b76f8792d0
+		summarizeBy: none
+		sourceColumn: provider_specialty
+
+	column source_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1624df78-73a6-4a09-91a7-ae6e43b76532
+		summarizeBy: none
+		sourceColumn: source_year
+
+	column provider_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 11c9a923-6948-4702-abf2-8da52fe04a48
+		summarizeBy: none
+		sourceColumn: provider_count
+
+	column specialty_total_beneficiary_lines
+		dataType: double
+		formatString: #,0
+		lineageTag: 658ef420-774d-4055-a610-dfdab62ef069
+		summarizeBy: sum
+		sourceColumn: specialty_total_beneficiary_lines
+
+	column specialty_total_services
+		dataType: double
+		formatString: #,0
+		lineageTag: bf6aac85-5b54-42d5-995c-bf30c0a45ecc
+		summarizeBy: sum
+		sourceColumn: specialty_total_services
+
+	column specialty_total_medicare_payment
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 358d159b-7b41-45cd-8b44-0dc75b48ed27
+		summarizeBy: sum
+		sourceColumn: specialty_total_medicare_payment
+
+	column specialty_avg_payment_per_beneficiary
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 29b76f9a-5267-4f94-9217-587f9d084fc4
+		summarizeBy: none
+		sourceColumn: specialty_avg_payment_per_beneficiary
+
+	column specialty_median_payment_per_beneficiary
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 54276e0e-0ea7-4e49-a2bd-b189159bf8db
+		summarizeBy: none
+		sourceColumn: specialty_median_payment_per_beneficiary
+
+	column specialty_median_payment_per_service
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 20a3caf2-0876-4361-94dd-70c4ce5aa9b9
+		summarizeBy: none
+		sourceColumn: specialty_median_payment_per_service
+
+	column payment_per_provider
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: a28d104b-8af7-419e-be1b-e2906fd3fd93
+		summarizeBy: none
+		sourceColumn: payment_per_provider
+
+	column services_per_provider
+		dataType: double
+		formatString: 0.00
+		lineageTag: 42e0ae84-e49b-4701-99cf-e1b0afb038a4
+		summarizeBy: none
+		sourceColumn: services_per_provider
+
+	column specialty_share_of_national_spend
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 216273ac-92fd-469f-8074-862fd075c70a
+		summarizeBy: none
+		sourceColumn: specialty_share_of_national_spend
+
+	column yoy_payment_change
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: cbebb5f8-5a67-4f41-9a2d-f290d2b4c9b9
+		summarizeBy: none
+		sourceColumn: yoy_payment_change
+
+	column yoy_payment_pct_change
+		dataType: double
+		formatString: 0.0%
+		lineageTag: bf8063e2-dd17-4d52-b51b-d0c56cda7f14
+		summarizeBy: none
+		sourceColumn: yoy_payment_pct_change
+
+	partition fact_specialty_year = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "fact_specialty_year.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "1f9bec72-1041-4c92-8e37-e053fe88b385",
+  "position": {
+    "x": 730,
+    "y": 100,
+    "z": 0,
+    "width": 240,
+    "height": 130,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Benchmarkable Provider Count"
+                }
+              },
+              "queryRef": "fact_provider_year.Benchmarkable Provider Count",
+              "nativeQueryRef": "Benchmarkable Provider Count"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

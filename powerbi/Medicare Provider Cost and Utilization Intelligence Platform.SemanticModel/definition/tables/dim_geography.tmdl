@@ -1,0 +1,53 @@
+table dim_geography
+	lineageTag: e91de121-84af-4e48-a42a-226d509eb321
+
+	column state
+		dataType: string
+		lineageTag: 71839783-cb71-4c13-9e99-979bddad3805
+		summarizeBy: none
+		sourceColumn: state
+
+	column state_name
+		dataType: string
+		lineageTag: fbc34b98-b60b-461a-93d2-53554fea8c0e
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: state_name
+
+	column census_region
+		dataType: string
+		lineageTag: 624281eb-6a07-47f0-aa86-ec2971d8f1e5
+		summarizeBy: none
+		sourceColumn: census_region
+
+	column census_division
+		dataType: string
+		lineageTag: 617748b7-169a-4a59-b63e-60d97494e9d6
+		summarizeBy: none
+		sourceColumn: census_division
+
+	hierarchy 'Geography Hierarchy'
+		lineageTag: dc0be32f-4830-409c-ace7-431539b32269
+
+		level Region
+			lineageTag: 5a3ac490-ebb9-4fff-ad74-d6653d7eed9b
+			column: census_region
+
+		level Division
+			lineageTag: 278f1cf3-a3ca-4732-8b99-9d40212761b8
+			column: census_division
+
+		level State
+			lineageTag: 171a3d4d-94bc-4d67-8d2b-1c11227ec1d4
+			column: state_name
+
+	partition dim_geography = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "dim_geography.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

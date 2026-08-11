@@ -1,0 +1,317 @@
+table fact_provider_year
+	lineageTag: dba18a44-c4d9-415b-8294-0ef36f8a0efe
+
+	measure 'Total Medicare Payments' = SUM(fact_provider_year[provider_total_medicare_payment])
+		formatString: \$#,0
+		displayFolder: Core
+		lineageTag: 47b39bb0-cc45-484f-a078-06143dc6635b
+
+	measure 'Provider Count' = DISTINCTCOUNT(fact_provider_year[rendering_npi])
+		formatString: #,0
+		displayFolder: Core
+		lineageTag: d099a72a-490b-4fd3-ac32-11051003362d
+
+	measure 'Total Services' = SUM(fact_provider_year[provider_total_services])
+		formatString: #,0
+		displayFolder: Core
+		lineageTag: debbffd3-ac63-4e55-ad14-23b570dcd2e1
+
+	measure 'Total Beneficiary Service-Lines' = SUM(fact_provider_year[provider_total_beneficiaries])
+		formatString: #,0
+		displayFolder: Core
+		lineageTag: 4a84fab7-609b-42b4-94ea-9dedf584c866
+
+	measure 'Total Submitted Charges' = SUM(fact_provider_year[provider_total_submitted_charge])
+		formatString: \$#,0
+		displayFolder: Core
+		lineageTag: 8322e61d-c0f2-48fc-917f-0bb330469886
+
+	measure 'Total Allowed Amount' = SUM(fact_provider_year[provider_total_allowed_amount])
+		formatString: \$#,0
+		displayFolder: Core
+		lineageTag: 8a865f0a-d01e-475e-8024-9cc728d51743
+
+	measure 'Payment per Provider' = DIVIDE([Total Medicare Payments], [Provider Count])
+		formatString: \$#,0
+		displayFolder: Core
+		lineageTag: 709fedd3-b2c0-4ee1-b1d5-231c2c1461e2
+
+	measure 'Payment per Beneficiary' = DIVIDE([Total Medicare Payments], [Total Beneficiary Service-Lines])
+		formatString: \$#,0.00
+		displayFolder: Core
+		lineageTag: 638c7492-ce0e-46cc-8475-31cd1e89f11a
+
+	measure 'Payment per Service' = DIVIDE([Total Medicare Payments], [Total Services])
+		formatString: \$#,0.00
+		displayFolder: Core
+		lineageTag: a9c90764-c951-4019-a463-1daf94e5122e
+
+	measure 'Payment to Allowed Ratio' = DIVIDE([Total Medicare Payments], [Total Allowed Amount])
+		formatString: 0.0%
+		displayFolder: Core
+		lineageTag: 2e5caf89-c03d-4730-8479-7e91b46e9a2a
+
+	measure 'YoY Payment % Change' =
+			VAR CurYear = MAX(fact_provider_year[source_year])
+			VAR CurVal = [Total Medicare Payments]
+			VAR PrevVal =
+				CALCULATE([Total Medicare Payments], fact_provider_year[source_year] = CurYear - 1)
+			RETURN
+				DIVIDE(CurVal - PrevVal, PrevVal)
+		formatString: 0.0%
+		displayFolder: Trends
+		lineageTag: 00ac80d7-46dd-48bb-9018-545dab327027
+
+	measure 'YoY Services % Change' =
+			VAR CurYear = MAX(fact_provider_year[source_year])
+			VAR CurVal = [Total Services]
+			VAR PrevVal =
+				CALCULATE([Total Services], fact_provider_year[source_year] = CurYear - 1)
+			RETURN
+				DIVIDE(CurVal - PrevVal, PrevVal)
+		formatString: 0.0%
+		displayFolder: Trends
+		lineageTag: ebb7eaa5-5a7b-424e-a721-1eb68da192da
+
+	measure 'Specialty Median Payment per Beneficiary' = AVERAGE(fact_provider_year[specialty_median_payment_per_beneficiary])
+		formatString: \$#,0.00
+		displayFolder: Benchmarking
+		lineageTag: 8f23fcf4-429b-425b-b081-6bb6a2e97f1e
+
+	measure 'Specialty Percentile Rank' = AVERAGE(fact_provider_year[percentile_rank_payment_per_beneficiary])
+		formatString: 0.0%
+		displayFolder: Benchmarking
+		lineageTag: 90159c90-e95f-4783-8724-5bf2ce273456
+
+	measure 'Relative Cost Ratio' = AVERAGE(fact_provider_year[relative_cost_ratio_beneficiary])
+		formatString: 0.00
+		displayFolder: Benchmarking
+		lineageTag: 75322725-3f3f-4343-8281-e62df7805f01
+
+	measure 'Robust Z-Score' = AVERAGE(fact_provider_year[robust_z_payment_per_beneficiary])
+		formatString: 0.00
+		displayFolder: Benchmarking
+		lineageTag: 4db755ce-ee97-4a73-9afc-2c4044369d26
+
+	measure 'Benchmarkable Provider Count' = CALCULATE([Provider Count], fact_provider_year[benchmark_reliable] = TRUE)
+		formatString: #,0
+		displayFolder: Benchmarking
+		lineageTag: 12f2c49f-fbfd-4944-92d0-c0616d92a23c
+
+	measure 'High-Cost Provider Count' = CALCULATE([Provider Count], fact_provider_year[is_high_cost_outlier] = TRUE)
+		formatString: #,0
+		displayFolder: Outliers
+		lineageTag: e102ed98-3115-4191-8e27-a488aacf8219
+
+	measure 'High-Cost Provider Rate' = DIVIDE([High-Cost Provider Count], [Benchmarkable Provider Count])
+		formatString: 0.0%
+		displayFolder: Outliers
+		lineageTag: 94038852-dd2c-48ee-b5ca-6c292f43608e
+
+	measure 'Outlier Methodology Disclaimer' = "Statistical outliers represent unusual utilization or cost patterns relative to peer providers and do not by themselves indicate fraud, waste, abuse, or improper billing."
+		displayFolder: Outliers
+		lineageTag: 372bf1a6-7a2d-4655-a3dd-0e04ce60b02c
+
+	column rendering_npi
+		dataType: string
+		lineageTag: d912a4d6-64fa-45d1-9eae-bd86910af594
+		summarizeBy: none
+		sourceColumn: rendering_npi
+
+	column source_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c160abf-ceb0-4556-b044-3661b529672c
+		summarizeBy: none
+		sourceColumn: source_year
+
+	column provider_specialty
+		dataType: string
+		lineageTag: 22465dbe-3d11-4c05-a7a6-cf89e9634b24
+		summarizeBy: none
+		sourceColumn: provider_specialty
+
+	column provider_state
+		dataType: string
+		lineageTag: b24d6b8b-6be9-42b2-b126-550a2a6723b8
+		summarizeBy: none
+		sourceColumn: provider_state
+
+	column distinct_hcpcs_codes
+		dataType: int64
+		formatString: #,0
+		lineageTag: 61f82ee2-01ee-4ceb-86b2-104e7d632191
+		summarizeBy: sum
+		sourceColumn: distinct_hcpcs_codes
+
+	column service_line_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: c90d100a-0d41-471a-848e-e12d5c9d9215
+		summarizeBy: sum
+		sourceColumn: service_line_count
+
+	column provider_total_beneficiaries
+		dataType: double
+		formatString: #,0
+		lineageTag: 3abffc4e-61a7-4f0d-9fa7-cf647bbf17b3
+		summarizeBy: sum
+		sourceColumn: provider_total_beneficiaries
+
+	column provider_total_services
+		dataType: double
+		formatString: #,0
+		lineageTag: 2acacc09-0d2b-4867-b09e-8a9c29d47deb
+		summarizeBy: sum
+		sourceColumn: provider_total_services
+
+	column provider_total_medicare_payment
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 78598862-6aaa-46dc-8f9a-69daceef69bc
+		summarizeBy: sum
+		sourceColumn: provider_total_medicare_payment
+
+	column provider_total_submitted_charge
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: f00aa7ec-c711-41e0-8576-440c6729bb2b
+		summarizeBy: sum
+		sourceColumn: provider_total_submitted_charge
+
+	column provider_total_allowed_amount
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 4bafb8ef-6170-4060-8dc7-6ba9735edf4c
+		summarizeBy: sum
+		sourceColumn: provider_total_allowed_amount
+
+	column payment_per_service
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 01d0e6bb-6a22-4b1b-a0b2-0290ee9d5ab1
+		summarizeBy: none
+		sourceColumn: payment_per_service
+
+	column services_per_beneficiary
+		dataType: double
+		formatString: 0.00
+		lineageTag: b8a67f90-85f5-431d-9d97-ee49ea3cffd2
+		summarizeBy: none
+		sourceColumn: services_per_beneficiary
+
+	column payment_per_beneficiary
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 48d85175-5e8a-4c6f-a449-79277ab0f10e
+		summarizeBy: none
+		sourceColumn: payment_per_beneficiary
+
+	column payment_to_allowed_ratio
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 5a68b00c-5139-4927-8ce7-9ba72175902d
+		summarizeBy: none
+		sourceColumn: payment_to_allowed_ratio
+
+	column yoy_payment_change
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 09b8e79c-addb-4662-a047-ec0c16863473
+		summarizeBy: none
+		sourceColumn: yoy_payment_change
+
+	column yoy_payment_pct_change
+		dataType: double
+		formatString: 0.0%
+		lineageTag: e8f9e20f-24f1-4d8d-bef1-a25c430c5b02
+		summarizeBy: none
+		sourceColumn: yoy_payment_pct_change
+
+	column yoy_services_change
+		dataType: double
+		formatString: #,0
+		lineageTag: 862263ac-0a71-405d-a5ab-bcecce43bf8c
+		summarizeBy: sum
+		sourceColumn: yoy_services_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column yoy_services_pct_change
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 56b74ba1-6503-4503-bdff-3d0b519285fb
+		summarizeBy: none
+		sourceColumn: yoy_services_pct_change
+
+	column peer_group_size
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6dffba76-b739-4b6e-ac1c-65c4d41d6a3a
+		summarizeBy: none
+		sourceColumn: peer_group_size
+
+	column benchmark_reliable
+		dataType: boolean
+		lineageTag: acfca667-e8fa-4460-8d74-bc64730a4fba
+		summarizeBy: none
+		sourceColumn: benchmark_reliable
+
+	column specialty_median_payment_per_beneficiary
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: e92f6b46-d532-4263-8d81-91e0d1a97644
+		summarizeBy: none
+		sourceColumn: specialty_median_payment_per_beneficiary
+
+	column specialty_p90_payment_per_beneficiary
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 94f3e31c-5980-44b3-ba2b-81cd6b2e8b60
+		summarizeBy: none
+		sourceColumn: specialty_p90_payment_per_beneficiary
+
+	column percentile_rank_payment_per_beneficiary
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 3b5c94a2-db59-48a8-815b-cc840df29e1b
+		summarizeBy: none
+		sourceColumn: percentile_rank_payment_per_beneficiary
+
+	column relative_cost_ratio_beneficiary
+		dataType: double
+		formatString: 0.00
+		lineageTag: 10afe3f3-b5ee-4ab3-9cd0-063fc3083bec
+		summarizeBy: none
+		sourceColumn: relative_cost_ratio_beneficiary
+
+	column robust_z_payment_per_beneficiary
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9763c491-2c85-43a9-b3af-1e408260f6f1
+		summarizeBy: none
+		sourceColumn: robust_z_payment_per_beneficiary
+
+	column is_high_cost_outlier
+		dataType: boolean
+		lineageTag: 17bdb4ab-f076-4e60-94d3-c23acb4b802e
+		summarizeBy: none
+		sourceColumn: is_high_cost_outlier
+
+	column outlier_methods_triggered_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 36fd5d52-e93d-4ec3-babc-a4837090ed91
+		summarizeBy: none
+		sourceColumn: outlier_methods_triggered_count
+
+	partition fact_provider_year = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "fact_provider_year.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

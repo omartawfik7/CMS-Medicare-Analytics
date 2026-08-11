@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["dim_year","dim_specialty","dim_geography","dim_provider","dim_hcpcs","dim_place_of_service","fact_provider_year","fact_provider_service_year","fact_specialty_year","fact_state_year","fact_procedure_year","fact_procedure_specialty_mix","fact_model_predictions","dim_model_metrics","DataFolder"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_year
+ref table dim_specialty
+ref table dim_geography
+ref table dim_provider
+ref table dim_hcpcs
+ref table dim_place_of_service
+ref table fact_provider_year
+ref table fact_provider_service_year
+ref table fact_specialty_year
+ref table fact_state_year
+ref table fact_procedure_year
+ref table fact_procedure_specialty_mix
+ref table fact_model_predictions
+ref table dim_model_metrics
+

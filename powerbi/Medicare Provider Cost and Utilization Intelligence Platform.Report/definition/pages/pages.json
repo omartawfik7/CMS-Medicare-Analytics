@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "page1_overview",
+    "page2_provider",
+    "page3_specialty",
+    "page4_geography",
+    "page5_outliers",
+    "page6_procedure",
+    "page7_model"
+  ],
+  "activePageName": "page6_procedure"
+}

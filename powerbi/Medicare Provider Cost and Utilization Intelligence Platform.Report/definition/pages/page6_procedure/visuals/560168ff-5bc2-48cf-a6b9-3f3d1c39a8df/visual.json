@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "560168ff-5bc2-48cf-a6b9-3f3d1c39a8df",
+  "position": {
+    "x": 780,
+    "y": 210,
+    "z": 0,
+    "height": 210,
+    "width": 500,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_specialty"
+                    }
+                  },
+                  "Property": "specialty"
+                }
+              },
+              "queryRef": "dim_specialty.specialty",
+              "nativeQueryRef": "specialty",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_procedure_specialty_mix"
+                    }
+                  },
+                  "Property": "Procedure-Specialty Payments (Latest Year)"
+                }
+              },
+              "queryRef": "fact_procedure_specialty_mix.Procedure-Specialty Payments (Latest Year)",
+              "nativeQueryRef": "Procedure-Specialty Payments (Latest Year)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Specialty Mix (Latest Year)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

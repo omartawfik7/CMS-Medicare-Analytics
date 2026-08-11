@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Medicare Provider Cost and Utilization Intelligence Platform"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "63286855-2f25-46d7-8cd5-f6818386eb08"
+  }
+}

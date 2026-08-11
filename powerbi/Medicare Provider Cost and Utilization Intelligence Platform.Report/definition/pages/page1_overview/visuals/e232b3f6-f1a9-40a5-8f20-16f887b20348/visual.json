@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "e232b3f6-f1a9-40a5-8f20-16f887b20348",
+  "position": {
+    "x": 40,
+    "y": 40,
+    "z": 0,
+    "width": 300,
+    "height": 150
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Total Medicare Payments"
+                }
+              },
+              "queryRef": "fact_provider_year.Total Medicare Payments",
+              "nativeQueryRef": "Total Medicare Payments"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+relationship f7c68915-e3f0-405a-834c-e01cadbf2383
+	fromColumn: fact_provider_year.source_year
+	toColumn: dim_year.year
+
+relationship 21acf51a-98ee-47d5-8086-34de75df28a8
+	fromColumn: fact_provider_service_year.source_year
+	toColumn: dim_year.year
+
+relationship bc108198-9f0f-460a-a59b-f6dd78b0c0c3
+	fromColumn: fact_specialty_year.source_year
+	toColumn: dim_year.year
+
+relationship 746f30c8-e004-48c4-896c-3943dfced54d
+	fromColumn: fact_state_year.source_year
+	toColumn: dim_year.year
+
+relationship c87723fa-f595-474f-b4fa-147cc0d62952
+	fromColumn: fact_procedure_year.source_year
+	toColumn: dim_year.year
+
+relationship c40a21a3-bcbd-4614-a940-37720d6e7934
+	fromColumn: fact_procedure_specialty_mix.source_year
+	toColumn: dim_year.year
+
+relationship ea62a382-ea1f-4db5-a02f-603990c3a8d8
+	fromColumn: fact_model_predictions.source_year
+	toColumn: dim_year.year
+
+relationship cd52cd42-41d0-442c-9d4f-5d4baf19e9ba
+	fromColumn: fact_provider_year.provider_specialty
+	toColumn: dim_specialty.specialty
+
+relationship 8a90cafd-e340-4688-a826-069173c9ff77
+	fromColumn: fact_specialty_year.provider_specialty
+	toColumn: dim_specialty.specialty
+
+relationship 51d6cb8b-ab76-4390-8880-27c1e29fa3f4
+	fromColumn: fact_procedure_specialty_mix.provider_specialty
+	toColumn: dim_specialty.specialty
+
+relationship 120988cd-e451-4939-ad3a-8d69e003d3f4
+	fromColumn: fact_provider_year.provider_state
+	toColumn: dim_geography.state
+
+relationship acd73fb3-7231-451f-9cc6-adc79437d216
+	fromColumn: fact_state_year.provider_state
+	toColumn: dim_geography.state
+
+relationship fc58d9d7-e9da-4ace-bf92-5cffd351f71e
+	fromColumn: fact_provider_year.rendering_npi
+	toColumn: dim_provider.rendering_npi
+
+relationship 5a813fc8-580e-46d5-9a4e-a4e3361f6a15
+	fromColumn: fact_provider_service_year.rendering_npi
+	toColumn: dim_provider.rendering_npi
+
+relationship 4bc5a011-e0e6-494c-8ebd-ecd020e16c73
+	fromColumn: fact_model_predictions.rendering_npi
+	toColumn: dim_provider.rendering_npi
+
+relationship 1b213549-bbee-48b8-ab36-c263be754bfa
+	fromColumn: fact_provider_service_year.hcpcs_code
+	toColumn: dim_hcpcs.hcpcs_code
+
+relationship d073263f-0fa9-49f3-bc71-31f61d4f6080
+	fromColumn: fact_procedure_year.hcpcs_code
+	toColumn: dim_hcpcs.hcpcs_code
+
+relationship 9c4be09f-389e-47ab-8079-4623ed09e5d5
+	fromColumn: fact_procedure_specialty_mix.hcpcs_code
+	toColumn: dim_hcpcs.hcpcs_code
+
+relationship 55e76b59-e3c2-43b3-abfa-fc1ffc861470
+	fromColumn: fact_provider_service_year.place_of_service
+	toColumn: dim_place_of_service.place_of_service
+
+relationship 2a8d4f16-6c3b-4a91-8e2f-9d5c7b1a3e40
+	isActive: false
+	fromColumn: dim_provider.provider_state
+	toColumn: dim_geography.state
+

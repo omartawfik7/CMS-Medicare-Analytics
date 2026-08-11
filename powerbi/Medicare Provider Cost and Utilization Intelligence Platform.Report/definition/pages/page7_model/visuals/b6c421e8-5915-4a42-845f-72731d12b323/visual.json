@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "b6c421e8-5915-4a42-845f-72731d12b323",
+  "position": {
+    "x": 0,
+    "y": 90,
+    "z": 0,
+    "width": 400,
+    "height": 25,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Model 1 -- Medicare Spending Prediction",
+                    "textStyle": {
+                      "fontSize": "15px",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

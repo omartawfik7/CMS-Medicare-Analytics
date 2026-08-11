@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "44eb7830-07d4-4cdf-bf36-10cd218cb80e",
+  "position": {
+    "x": 780,
+    "y": 250,
+    "z": 0,
+    "height": 220,
+    "width": 500,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_hcpcs"
+                    }
+                  },
+                  "Property": "hcpcs_description"
+                }
+              },
+              "queryRef": "dim_hcpcs.hcpcs_description",
+              "nativeQueryRef": "hcpcs_description",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_service_year"
+                    }
+                  },
+                  "Property": "Service-Line Payments (Latest Year)"
+                }
+              },
+              "queryRef": "fact_provider_service_year.Service-Line Payments (Latest Year)",
+              "nativeQueryRef": "Service-Line Payments (Latest Year)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Procedure Mix (Latest Year)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

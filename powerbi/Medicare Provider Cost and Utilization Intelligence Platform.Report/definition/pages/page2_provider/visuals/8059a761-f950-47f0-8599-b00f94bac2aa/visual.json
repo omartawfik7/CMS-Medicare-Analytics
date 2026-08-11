@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8059a761-f950-47f0-8599-b00f94bac2aa",
+  "position": {
+    "x": 270,
+    "y": 480,
+    "z": 0,
+    "width": 240,
+    "height": 200,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Specialty Percentile Rank"
+                }
+              },
+              "queryRef": "fact_provider_year.Specialty Percentile Rank",
+              "nativeQueryRef": "Specialty Percentile Rank"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

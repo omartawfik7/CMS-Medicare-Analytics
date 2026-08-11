@@ -1,0 +1,127 @@
+table fact_provider_service_year
+	lineageTag: 41f7d59b-7af7-41c1-aab3-e012e5cd4a37
+
+	measure 'Service-Line Payments (Latest Year)' = SUM(fact_provider_service_year[est_total_medicare_payment])
+		formatString: \$#,0
+		displayFolder: Procedure Detail
+		lineageTag: aea4ebef-5dfb-4481-89fa-fe31cc97779a
+
+	measure 'Service-Line Volume (Latest Year)' = SUM(fact_provider_service_year[total_services])
+		formatString: #,0
+		displayFolder: Procedure Detail
+		lineageTag: 0a486f98-3a31-4b6d-9df0-09b07c93b469
+
+	measure 'Distinct Procedures Billed' = DISTINCTCOUNT(fact_provider_service_year[hcpcs_code])
+		formatString: #,0
+		displayFolder: Procedure Detail
+		lineageTag: 96f4d2aa-272f-4f30-a7eb-d7716db354c8
+
+	column rendering_npi
+		dataType: string
+		lineageTag: fea2e4dc-5ae4-4da4-8d61-060aa3ec687d
+		summarizeBy: none
+		sourceColumn: rendering_npi
+
+	column source_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3981445e-23a1-46ef-8ca2-710fbea09d8f
+		summarizeBy: none
+		sourceColumn: source_year
+
+	column hcpcs_code
+		dataType: string
+		lineageTag: 4ab254c8-530f-47c3-82c3-6d349c62ba95
+		summarizeBy: none
+		sourceColumn: hcpcs_code
+
+	column hcpcs_description
+		dataType: string
+		lineageTag: c5686abf-a8e8-40bc-bca8-9f9e3c31f3b4
+		summarizeBy: none
+		sourceColumn: hcpcs_description
+
+	column is_drug_code
+		dataType: boolean
+		lineageTag: 58de8b11-238c-461e-977b-9f29069cc0e3
+		summarizeBy: none
+		sourceColumn: is_drug_code
+
+	column place_of_service
+		dataType: string
+		lineageTag: 7c566312-d287-40d2-8ac0-26fca2e08831
+		summarizeBy: none
+		sourceColumn: place_of_service
+
+	column total_beneficiaries
+		dataType: int64
+		formatString: #,0
+		lineageTag: d53449e4-75c8-40cd-9a7b-fa042ef9fb83
+		summarizeBy: sum
+		sourceColumn: total_beneficiaries
+
+	column total_services
+		dataType: int64
+		formatString: #,0
+		lineageTag: e8ecdba2-0099-4150-a94d-895586e50c21
+		summarizeBy: sum
+		sourceColumn: total_services
+
+	column total_bene_day_services
+		dataType: int64
+		formatString: #,0
+		lineageTag: cbbf3091-6779-461b-859e-82f309602a84
+		summarizeBy: sum
+		sourceColumn: total_bene_day_services
+
+	column avg_submitted_charge
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: eb93b2ef-0726-4a35-8850-bb0d0679a020
+		summarizeBy: none
+		sourceColumn: avg_submitted_charge
+
+	column avg_medicare_allowed_amt
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: bdf2f3d0-03cb-4f07-8ae8-424ad0977889
+		summarizeBy: none
+		sourceColumn: avg_medicare_allowed_amt
+
+	column avg_medicare_payment_amt
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: eabb6e9e-ac6c-463b-9375-4869485fed0a
+		summarizeBy: none
+		sourceColumn: avg_medicare_payment_amt
+
+	column avg_medicare_standardized_amt
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: b493511b-890a-404a-9846-5b51316db6eb
+		summarizeBy: none
+		sourceColumn: avg_medicare_standardized_amt
+
+	column est_total_medicare_payment
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 94ce98c0-5345-42f9-9823-7d5624230f85
+		summarizeBy: sum
+		sourceColumn: est_total_medicare_payment
+
+	column is_near_suppression_threshold
+		dataType: boolean
+		lineageTag: 91b446ec-dffd-404c-a915-e273553394ce
+		summarizeBy: none
+		sourceColumn: is_near_suppression_threshold
+
+	partition fact_provider_service_year = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "fact_provider_service_year.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

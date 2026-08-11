@@ -1,0 +1,109 @@
+table fact_state_year
+	lineageTag: 88c31ba6-35a3-4d5c-ace5-9805ff8c21be
+
+	measure 'State Total Payments' = SUM(fact_state_year[state_total_medicare_payment])
+		formatString: \$#,0
+		displayFolder: Geography
+		lineageTag: 1a230dec-2b21-41d3-8094-ef38d98e8a06
+
+	measure 'State Provider Count' = SUM(fact_state_year[provider_count])
+		formatString: #,0
+		displayFolder: Geography
+		lineageTag: b6ab51f2-581a-4cd3-a6d4-232fd03d70b5
+
+	measure 'State Share of National Spend' = AVERAGE(fact_state_year[state_share_of_national_spend])
+		formatString: 0.0%
+		displayFolder: Geography
+		lineageTag: 2d01e4ed-9855-4ceb-bf88-06146c088d4c
+
+	measure 'State Payment per Provider' = DIVIDE([State Total Payments], [State Provider Count])
+		formatString: \$#,0
+		displayFolder: Geography
+		lineageTag: 5ae4e55b-0a39-41b0-b8dd-2af635d01b71
+
+	column provider_state
+		dataType: string
+		lineageTag: 906771e9-f5f0-49be-8b04-853593a5a2e8
+		summarizeBy: none
+		sourceColumn: provider_state
+
+	column source_year
+		dataType: int64
+		formatString: 0
+		lineageTag: a2d5fff3-d106-4074-ad78-87471f6cb862
+		summarizeBy: none
+		sourceColumn: source_year
+
+	column provider_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 215cf389-4c93-403f-b1b7-c020024426ec
+		summarizeBy: none
+		sourceColumn: provider_count
+
+	column state_total_beneficiary_lines
+		dataType: double
+		formatString: #,0
+		lineageTag: ca36ef1b-a645-4908-8dc9-8c364115c2e6
+		summarizeBy: sum
+		sourceColumn: state_total_beneficiary_lines
+
+	column state_total_services
+		dataType: double
+		formatString: #,0
+		lineageTag: c8063a61-1abd-4364-a77f-e25e4399877a
+		summarizeBy: sum
+		sourceColumn: state_total_services
+
+	column state_total_medicare_payment
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: f9e2c57d-fee0-450c-9878-15276c8e8d49
+		summarizeBy: sum
+		sourceColumn: state_total_medicare_payment
+
+	column payment_per_provider
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 0023c4d2-918c-461a-9dac-46aa096d6bcb
+		summarizeBy: none
+		sourceColumn: payment_per_provider
+
+	column payment_per_beneficiary
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: acfcf125-e732-4373-a09a-73e6d3d78d10
+		summarizeBy: none
+		sourceColumn: payment_per_beneficiary
+
+	column state_share_of_national_spend
+		dataType: double
+		formatString: 0.00%
+		lineageTag: 9fcccad9-345d-4988-87c1-781b22884f8e
+		summarizeBy: none
+		sourceColumn: state_share_of_national_spend
+
+	column yoy_payment_change
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: 16d9bb01-0019-407c-97f0-9dfc1035d723
+		summarizeBy: none
+		sourceColumn: yoy_payment_change
+
+	column yoy_payment_pct_change
+		dataType: double
+		formatString: 0.0%
+		lineageTag: acdae5fc-74b3-4327-86bd-7eddb427a8e8
+		summarizeBy: none
+		sourceColumn: yoy_payment_pct_change
+
+	partition fact_state_year = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "fact_state_year.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

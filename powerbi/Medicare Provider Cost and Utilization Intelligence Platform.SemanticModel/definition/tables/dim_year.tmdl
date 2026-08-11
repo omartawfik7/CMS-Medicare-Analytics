@@ -1,0 +1,26 @@
+table dim_year
+	lineageTag: 59919a51-efce-40b2-b8ed-ed93001d4047
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: ffb15095-762b-4d98-8628-2a2536bb9065
+		summarizeBy: none
+		sourceColumn: year
+
+	column year_label
+		dataType: string
+		lineageTag: f4f7e09f-9368-4810-8832-42dadbef3367
+		summarizeBy: none
+		sourceColumn: year_label
+
+	partition dim_year = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "dim_year.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

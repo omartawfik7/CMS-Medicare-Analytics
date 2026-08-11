@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "20c9c078-ad68-4b7a-be86-a400bd755301",
+  "position": {
+    "x": 230,
+    "y": 470,
+    "z": 0,
+    "height": 200,
+    "width": 1030,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_year"
+                    }
+                  },
+                  "Property": "year"
+                }
+              },
+              "queryRef": "dim_year.year",
+              "nativeQueryRef": "year",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Total Payments"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Total Payments",
+              "nativeQueryRef": "Specialty Total Payments"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Specialty Payment Trend'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

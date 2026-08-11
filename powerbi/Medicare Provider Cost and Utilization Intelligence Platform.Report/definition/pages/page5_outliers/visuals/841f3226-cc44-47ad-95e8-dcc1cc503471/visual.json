@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "841f3226-cc44-47ad-95e8-dcc1cc503471",
+  "position": {
+    "x": 230,
+    "y": 240,
+    "z": 0,
+    "height": 260,
+    "width": 740,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "rendering_npi"
+                }
+              },
+              "queryRef": "fact_provider_year.rendering_npi",
+              "nativeQueryRef": "rendering_npi",
+              "active": true
+            }
+          ]
+        },
+        "Legend": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "is_high_cost_outlier"
+                }
+              },
+              "queryRef": "fact_provider_year.is_high_cost_outlier",
+              "nativeQueryRef": "is_high_cost_outlier"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Relative Cost Ratio"
+                }
+              },
+              "queryRef": "fact_provider_year.Relative Cost Ratio",
+              "nativeQueryRef": "Relative Cost Ratio",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Specialty Percentile Rank"
+                }
+              },
+              "queryRef": "fact_provider_year.Specialty Percentile Rank",
+              "nativeQueryRef": "Specialty Percentile Rank"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Peer Distribution: Relative Cost Ratio vs. Specialty Percentile Rank'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

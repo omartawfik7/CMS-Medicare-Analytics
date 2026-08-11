@@ -1,0 +1,185 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "32e12dca-d2f9-4cd8-8f79-76f9d1c09c17",
+  "position": {
+    "x": 270,
+    "y": 50,
+    "z": 0,
+    "width": 1010,
+    "height": 190,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_provider"
+                    }
+                  },
+                  "Property": "provider_name"
+                }
+              },
+              "queryRef": "dim_provider.provider_name",
+              "nativeQueryRef": "provider_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "provider_specialty"
+                }
+              },
+              "queryRef": "fact_provider_year.provider_specialty",
+              "nativeQueryRef": "provider_specialty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "provider_state"
+                }
+              },
+              "queryRef": "fact_provider_year.provider_state",
+              "nativeQueryRef": "provider_state"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Total Medicare Payments"
+                }
+              },
+              "queryRef": "fact_provider_year.Total Medicare Payments",
+              "nativeQueryRef": "Total Medicare Payments"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Total Services"
+                }
+              },
+              "queryRef": "fact_provider_year.Total Services",
+              "nativeQueryRef": "Total Services"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Total Beneficiary Service-Lines"
+                }
+              },
+              "queryRef": "fact_provider_year.Total Beneficiary Service-Lines",
+              "nativeQueryRef": "Total Beneficiary Service-Lines"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Payment per Service"
+                }
+              },
+              "queryRef": "fact_provider_year.Payment per Service",
+              "nativeQueryRef": "Payment per Service"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Payment per Beneficiary"
+                }
+              },
+              "queryRef": "fact_provider_year.Payment per Beneficiary",
+              "nativeQueryRef": "Payment per Beneficiary"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Specialty Percentile Rank"
+                }
+              },
+              "queryRef": "fact_provider_year.Specialty Percentile Rank",
+              "nativeQueryRef": "Specialty Percentile Rank"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Relative Cost Ratio"
+                }
+              },
+              "queryRef": "fact_provider_year.Relative Cost Ratio",
+              "nativeQueryRef": "Relative Cost Ratio"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Provider Detail'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

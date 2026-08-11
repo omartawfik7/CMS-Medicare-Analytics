@@ -1,0 +1,74 @@
+{
+  "2018": {
+    "download_completed_at": "2026-08-11T17:28:44.440792+00:00",
+    "download_started_at": "2026-08-11T17:26:26.514932+00:00",
+    "elapsed_seconds": 137.9,
+    "file_size_bytes": 3125246884,
+    "path": "data/raw/MUP_PHY_2018_Prov_Svc.csv",
+    "resumed": false,
+    "row_count": 9961865,
+    "sha256": "57d38e70030d4d367fc348801a615373fd78fd3a78816c62290b95e313f80066",
+    "url": "https://data.cms.gov/sites/default/files/2025-11/5669eafb-f0b3-4dc5-be6d-abc09b480c2e/MUP_PHY_R25_P04_V20_D18_Prov_Svc.csv",
+    "year": 2018
+  },
+  "2019": {
+    "download_completed_at": "2026-08-11T17:36:56.651394+00:00",
+    "download_started_at": "2026-08-11T17:36:56.651394+00:00",
+    "elapsed_seconds": 0.0,
+    "file_size_bytes": 3176102801,
+    "path": "data/raw/MUP_PHY_2019_Prov_Svc.csv",
+    "resumed": false,
+    "row_count": 10140228,
+    "sha256": "8543d0fa56341c1bfb18766d45dac55662423669a98e3ff49eb73235a1595487",
+    "url": "https://data.cms.gov/sites/default/files/2025-11/7befba27-752e-47a8-a76c-6c6d4f74f2e3/MUP_PHY_R25_P04_V20_D19_Prov_Svc.csv",
+    "year": 2019
+  },
+  "2020": {
+    "download_completed_at": "2026-08-11T17:38:21.806453+00:00",
+    "download_started_at": "2026-08-11T17:37:36.774087+00:00",
+    "elapsed_seconds": 45.0,
+    "file_size_bytes": 2994090236,
+    "path": "data/raw/MUP_PHY_2020_Prov_Svc.csv",
+    "resumed": true,
+    "row_count": 9449361,
+    "sha256": "306f2c37809ce7355cb591d09ecb108cb8cc37dea09f30f181adec39530a2a03",
+    "url": "https://data.cms.gov/sites/default/files/2025-11/d22b18cd-7726-4bf5-8e9c-3e4587c589a1/MUP_PHY_R25_P05_V20_D20_Prov_Svc.csv",
+    "year": 2020
+  },
+  "2021": {
+    "download_completed_at": "2026-08-11T17:40:58.898360+00:00",
+    "download_started_at": "2026-08-11T17:39:14.044448+00:00",
+    "elapsed_seconds": 104.9,
+    "file_size_bytes": 3100222715,
+    "path": "data/raw/MUP_PHY_2021_Prov_Svc.csv",
+    "resumed": false,
+    "row_count": 9886177,
+    "sha256": "4e3d65744b60441e6236430c863260928157924d8ba3c6a056e462a4dfdc9b50",
+    "url": "https://data.cms.gov/sites/default/files/2025-11/bffaf97a-c2ab-4fd7-8718-be90742e3485/MUP_PHY_R25_P05_V20_D21_Prov_Svc.csv",
+    "year": 2021
+  },
+  "2022": {
+    "download_completed_at": "2026-08-11T17:43:34.847462+00:00",
+    "download_started_at": "2026-08-11T17:41:56.491836+00:00",
+    "elapsed_seconds": 98.4,
+    "file_size_bytes": 3066783950,
+    "path": "data/raw/MUP_PHY_2022_Prov_Svc.csv",
+    "resumed": false,
+    "row_count": 9755427,
+    "sha256": "915eef8d6f099af5c5f0a91aa4931d184502d07c1e3dfbd275498cc7e485c5bc",
+    "url": "https://data.cms.gov/sites/default/files/2025-11/53fb2bae-4913-48dc-a6d4-d8c025906567/MUP_PHY_R25_P05_V20_D22_Prov_Svc.csv",
+    "year": 2022
+  },
+  "2023": {
+    "download_completed_at": "2026-08-11T17:46:17.907316+00:00",
+    "download_started_at": "2026-08-11T17:44:34.580694+00:00",
+    "elapsed_seconds": 103.3,
+    "file_size_bytes": 3062332720,
+    "path": "data/raw/MUP_PHY_2023_Prov_Svc.csv",
+    "resumed": false,
+    "row_count": 9660647,
+    "sha256": "c6766dda7c66c74682af892d9ed5f8a347248dc0f6be2bda8aee7eecc02a902b",
+    "url": "https://data.cms.gov/sites/default/files/2025-04/e3f823f8-db5b-4cc7-ba04-e7ae92b99757/MUP_PHY_R25_P05_V20_D23_Prov_Svc.csv",
+    "year": 2023
+  }
+}

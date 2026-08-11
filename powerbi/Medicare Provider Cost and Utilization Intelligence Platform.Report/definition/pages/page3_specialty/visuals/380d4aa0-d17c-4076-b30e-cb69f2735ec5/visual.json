@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "380d4aa0-d17c-4076-b30e-cb69f2735ec5",
+  "position": {
+    "x": 540,
+    "y": 50,
+    "z": 0,
+    "width": 720,
+    "height": 200,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_specialty"
+                    }
+                  },
+                  "Property": "specialty"
+                }
+              },
+              "queryRef": "dim_specialty.specialty",
+              "nativeQueryRef": "specialty"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Total Payments"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Total Payments",
+              "nativeQueryRef": "Specialty Total Payments"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Provider Count"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Provider Count",
+              "nativeQueryRef": "Specialty Provider Count"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "specialty_total_services"
+                }
+              },
+              "queryRef": "fact_specialty_year.specialty_total_services",
+              "nativeQueryRef": "specialty_total_services"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "specialty_total_beneficiary_lines"
+                }
+              },
+              "queryRef": "fact_specialty_year.specialty_total_beneficiary_lines",
+              "nativeQueryRef": "specialty_total_beneficiary_lines"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Payment per Provider"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Payment per Provider",
+              "nativeQueryRef": "Specialty Payment per Provider"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "specialty_median_payment_per_service"
+                }
+              },
+              "queryRef": "fact_specialty_year.specialty_median_payment_per_service",
+              "nativeQueryRef": "specialty_median_payment_per_service"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Share of National Spend"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Share of National Spend",
+              "nativeQueryRef": "Specialty Share of National Spend"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Specialty Rankings'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

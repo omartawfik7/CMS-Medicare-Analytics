@@ -1,0 +1,80 @@
+table fact_model_predictions
+	lineageTag: 0cb1af82-749c-4202-b821-131c398731f4
+
+	measure 'Model 1 -- Avg Predicted Payment' =
+			CALCULATE(
+				AVERAGE(fact_model_predictions[predicted_value]),
+				fact_model_predictions[model] = "model1_payment_regressor"
+			)
+		formatString: \$#,0
+		displayFolder: Model
+		lineageTag: f8776e95-57db-471a-a924-be4b6e53fdaa
+
+	measure 'Model 1 -- Avg Actual Payment' =
+			CALCULATE(
+				AVERAGE(fact_model_predictions[actual_value]),
+				fact_model_predictions[model] = "model1_payment_regressor"
+			)
+		formatString: \$#,0
+		displayFolder: Model
+		lineageTag: f56fb331-7ed9-46e9-bbb8-d83d9fb4c4e0
+
+	measure 'Model 2 -- Avg Predicted Probability' =
+			CALCULATE(
+				AVERAGE(fact_model_predictions[predicted_probability]),
+				fact_model_predictions[model] = "model2_high_cost_classifier"
+			)
+		formatString: 0.0%
+		displayFolder: Model
+		lineageTag: 842a61fb-afc1-4273-964b-41d8a9138661
+
+	column rendering_npi
+		dataType: string
+		lineageTag: 0087a7d0-ead4-4aab-9b40-707a4c7a4d99
+		summarizeBy: none
+		sourceColumn: rendering_npi
+
+	column source_year
+		dataType: int64
+		formatString: 0
+		lineageTag: a6c475e5-4f2e-49ad-ac57-d33092689b4b
+		summarizeBy: none
+		sourceColumn: source_year
+
+	column model
+		dataType: string
+		lineageTag: af7d8245-e7fa-4721-bb3b-2f107d6f6807
+		summarizeBy: none
+		sourceColumn: model
+
+	column actual_value
+		dataType: double
+		formatString: 0.00
+		lineageTag: c55fd504-8ef7-483e-ae93-347d28d959aa
+		summarizeBy: none
+		sourceColumn: actual_value
+
+	column predicted_value
+		dataType: double
+		formatString: 0.00
+		lineageTag: d0d5da69-1997-4ffa-851d-fed3fd80a82f
+		summarizeBy: none
+		sourceColumn: predicted_value
+
+	column predicted_probability
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 7fb1bd2c-ded3-4291-9d90-e0e61f2225b1
+		summarizeBy: none
+		sourceColumn: predicted_probability
+
+	partition fact_model_predictions = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "fact_model_predictions.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

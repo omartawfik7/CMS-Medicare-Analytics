@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0520de88-4a04-4e7e-8e67-071b46f0d86e",
+  "position": {
+    "x": 740,
+    "y": 260,
+    "z": 0,
+    "height": 200,
+    "width": 520,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_specialty"
+                    }
+                  },
+                  "Property": "specialty"
+                }
+              },
+              "queryRef": "dim_specialty.specialty",
+              "nativeQueryRef": "specialty",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Payment per Provider"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Payment per Provider",
+              "nativeQueryRef": "Specialty Payment per Provider",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Provider Count"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Provider Count",
+              "nativeQueryRef": "Specialty Provider Count"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Specialty Comparison: Payment/Provider vs. Provider Count'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

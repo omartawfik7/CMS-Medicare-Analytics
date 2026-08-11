@@ -1,0 +1,143 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8b29a7f3-31ea-41b2-802e-b9718cf2900d",
+  "position": {
+    "x": 650,
+    "y": 400,
+    "z": 0,
+    "width": 630,
+    "height": 220,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_geography"
+                    }
+                  },
+                  "Property": "state_name"
+                }
+              },
+              "queryRef": "dim_geography.state_name",
+              "nativeQueryRef": "state_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_geography"
+                    }
+                  },
+                  "Property": "census_region"
+                }
+              },
+              "queryRef": "dim_geography.census_region",
+              "nativeQueryRef": "census_region"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_state_year"
+                    }
+                  },
+                  "Property": "State Total Payments"
+                }
+              },
+              "queryRef": "fact_state_year.State Total Payments",
+              "nativeQueryRef": "State Total Payments"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_state_year"
+                    }
+                  },
+                  "Property": "State Provider Count"
+                }
+              },
+              "queryRef": "fact_state_year.State Provider Count",
+              "nativeQueryRef": "State Provider Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_state_year"
+                    }
+                  },
+                  "Property": "State Payment per Provider"
+                }
+              },
+              "queryRef": "fact_state_year.State Payment per Provider",
+              "nativeQueryRef": "State Payment per Provider"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_state_year"
+                    }
+                  },
+                  "Property": "payment_per_beneficiary"
+                }
+              },
+              "queryRef": "fact_state_year.payment_per_beneficiary",
+              "nativeQueryRef": "payment_per_beneficiary"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_state_year"
+                    }
+                  },
+                  "Property": "State Share of National Spend"
+                }
+              },
+              "queryRef": "fact_state_year.State Share of National Spend",
+              "nativeQueryRef": "State Share of National Spend"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'State Detail'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

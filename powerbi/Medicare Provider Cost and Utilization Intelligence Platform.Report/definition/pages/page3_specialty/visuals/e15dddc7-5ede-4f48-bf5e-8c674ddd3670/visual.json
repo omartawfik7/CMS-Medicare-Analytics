@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "e15dddc7-5ede-4f48-bf5e-8c674ddd3670",
+  "position": {
+    "x": 230,
+    "y": 260,
+    "z": 0,
+    "height": 200,
+    "width": 500,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_specialty"
+                    }
+                  },
+                  "Property": "specialty"
+                }
+              },
+              "queryRef": "dim_specialty.specialty",
+              "nativeQueryRef": "specialty",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Total Payments"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Total Payments",
+              "nativeQueryRef": "Specialty Total Payments"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top 15 Specialties by Payment'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

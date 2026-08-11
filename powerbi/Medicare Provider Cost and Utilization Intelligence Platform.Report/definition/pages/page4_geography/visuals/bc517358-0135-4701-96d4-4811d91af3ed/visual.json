@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "bc517358-0135-4701-96d4-4811d91af3ed",
+  "position": {
+    "x": 0,
+    "y": 260,
+    "z": 0,
+    "width": 260,
+    "height": 130,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_state_year"
+                    }
+                  },
+                  "Property": "State Provider Count"
+                }
+              },
+              "queryRef": "fact_state_year.State Provider Count",
+              "nativeQueryRef": "State Provider Count"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

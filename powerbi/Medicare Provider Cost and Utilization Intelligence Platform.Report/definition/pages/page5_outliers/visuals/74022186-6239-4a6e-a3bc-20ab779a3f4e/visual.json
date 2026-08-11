@@ -1,0 +1,171 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "74022186-6239-4a6e-a3bc-20ab779a3f4e",
+  "position": {
+    "x": 230,
+    "y": 510,
+    "z": 0,
+    "width": 1030,
+    "height": 190,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_provider"
+                    }
+                  },
+                  "Property": "provider_name"
+                }
+              },
+              "queryRef": "dim_provider.provider_name",
+              "nativeQueryRef": "provider_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "provider_specialty"
+                }
+              },
+              "queryRef": "fact_provider_year.provider_specialty",
+              "nativeQueryRef": "provider_specialty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "provider_state"
+                }
+              },
+              "queryRef": "fact_provider_year.provider_state",
+              "nativeQueryRef": "provider_state"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "payment_per_beneficiary"
+                }
+              },
+              "queryRef": "fact_provider_year.payment_per_beneficiary",
+              "nativeQueryRef": "payment_per_beneficiary"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Specialty Median Payment per Beneficiary"
+                }
+              },
+              "queryRef": "fact_provider_year.Specialty Median Payment per Beneficiary",
+              "nativeQueryRef": "Specialty Median Payment per Beneficiary"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Relative Cost Ratio"
+                }
+              },
+              "queryRef": "fact_provider_year.Relative Cost Ratio",
+              "nativeQueryRef": "Relative Cost Ratio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Specialty Percentile Rank"
+                }
+              },
+              "queryRef": "fact_provider_year.Specialty Percentile Rank",
+              "nativeQueryRef": "Specialty Percentile Rank"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "Robust Z-Score"
+                }
+              },
+              "queryRef": "fact_provider_year.Robust Z-Score",
+              "nativeQueryRef": "Robust Z-Score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_year"
+                    }
+                  },
+                  "Property": "outlier_methods_triggered_count"
+                }
+              },
+              "queryRef": "fact_provider_year.outlier_methods_triggered_count",
+              "nativeQueryRef": "outlier_methods_triggered_count"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Provider Ranking -- Cost vs. Peers'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

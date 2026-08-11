@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f4a2c223-3f29-46ca-896f-f0f80ac45021",
+  "position": {
+    "x": 0,
+    "y": 45,
+    "z": 0,
+    "width": 1280,
+    "height": 40,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Statistical outliers represent unusual utilization or cost patterns relative to peer providers and do not by themselves indicate fraud, waste, abuse, or improper billing.",
+                    "textStyle": {
+                      "fontSize": "13px",
+                      "fontWeight": "normal"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

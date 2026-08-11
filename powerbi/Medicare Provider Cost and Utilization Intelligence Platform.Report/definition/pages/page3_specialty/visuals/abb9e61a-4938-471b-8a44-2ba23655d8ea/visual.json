@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "abb9e61a-4938-471b-8a44-2ba23655d8ea",
+  "position": {
+    "x": 230,
+    "y": 50,
+    "z": 0,
+    "width": 300,
+    "height": 150,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_specialty_year"
+                    }
+                  },
+                  "Property": "Specialty Total Payments"
+                }
+              },
+              "queryRef": "fact_specialty_year.Specialty Total Payments",
+              "nativeQueryRef": "Specialty Total Payments"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

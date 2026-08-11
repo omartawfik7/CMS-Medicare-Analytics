@@ -1,0 +1,58 @@
+table fact_procedure_specialty_mix
+	lineageTag: e0f09483-0753-4b85-bc9d-0b610244fc3f
+
+	measure 'Procedure-Specialty Payments (Latest Year)' = SUM(fact_procedure_specialty_mix[total_medicare_payment])
+		formatString: \$#,0
+		displayFolder: Procedure
+		lineageTag: 3cf42119-959e-4130-8f47-dc223d89b088
+
+	column hcpcs_code
+		dataType: string
+		lineageTag: eeb541cd-f450-42d5-9b1d-656c28b60f52
+		summarizeBy: none
+		sourceColumn: hcpcs_code
+
+	column provider_specialty
+		dataType: string
+		lineageTag: 65de4ec1-2888-4abb-a20d-5bef37309519
+		summarizeBy: none
+		sourceColumn: provider_specialty
+
+	column source_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bf9a530-c8b9-441e-b514-42cf4207e4ec
+		summarizeBy: none
+		sourceColumn: source_year
+
+	column provider_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 47fd3b06-6051-4175-a1d9-acada0e1d06b
+		summarizeBy: sum
+		sourceColumn: provider_count
+
+	column total_services
+		dataType: double
+		formatString: #,0
+		lineageTag: be62d99c-7dd4-49ef-976e-c8e3c595eb28
+		summarizeBy: sum
+		sourceColumn: total_services
+
+	column total_medicare_payment
+		dataType: double
+		formatString: \$#,0.00
+		lineageTag: a0767d80-83ee-43ac-8537-e0766b0951fb
+		summarizeBy: sum
+		sourceColumn: total_medicare_payment
+
+	partition fact_procedure_specialty_mix = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "fact_procedure_specialty_mix.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

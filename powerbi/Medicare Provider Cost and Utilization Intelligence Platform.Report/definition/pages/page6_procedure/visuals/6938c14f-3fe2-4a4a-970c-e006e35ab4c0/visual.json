@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6938c14f-3fe2-4a4a-970c-e006e35ab4c0",
+  "position": {
+    "x": 270,
+    "y": 210,
+    "z": 0,
+    "height": 210,
+    "width": 500,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_hcpcs"
+                    }
+                  },
+                  "Property": "hcpcs_description"
+                }
+              },
+              "queryRef": "dim_hcpcs.hcpcs_description",
+              "nativeQueryRef": "hcpcs_description",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_procedure_year"
+                    }
+                  },
+                  "Property": "Procedure Total Payments"
+                }
+              },
+              "queryRef": "fact_procedure_year.Procedure Total Payments",
+              "nativeQueryRef": "Procedure Total Payments"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top 15 Procedures by Payment'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

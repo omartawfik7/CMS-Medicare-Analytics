@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "492075ac-7243-4324-abf9-8bf16349cead",
+  "position": {
+    "x": 0,
+    "y": 45,
+    "z": 0,
+    "width": 1280,
+    "height": 30,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Model 1: Medicare spending prediction (regression). Model 2: specialty-adjusted high-cost provider classification. Both evaluated on a strict temporal holdout (test year = most recent loaded year; trained only on earlier years). See reports/model_metrics.json for full detail.",
+                    "textStyle": {
+                      "fontSize": "12px",
+                      "fontWeight": "normal"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

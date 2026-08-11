@@ -1,0 +1,72 @@
+table dim_model_metrics
+	lineageTag: a645487a-7d1e-4aa4-9e8f-6575cfba76e7
+
+	measure 'Model 1 MAE' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 1: Payment Prediction", dim_model_metrics[metric] = "MAE")
+		formatString: \$#,0.00
+		displayFolder: Model
+		lineageTag: 85e6dc94-973b-4b7b-a7df-bcad796b633a
+
+	measure 'Model 1 RMSE' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 1: Payment Prediction", dim_model_metrics[metric] = "RMSE")
+		formatString: \$#,0.00
+		displayFolder: Model
+		lineageTag: 1717054b-8aaa-4ce4-b6f1-ee21c7f6c111
+
+	measure 'Model 1 R2' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 1: Payment Prediction", dim_model_metrics[metric] = "R2")
+		formatString: 0.000
+		displayFolder: Model
+		lineageTag: 4eae1cf7-d4ab-419c-985e-10347ee6ee20
+
+	measure 'Model 2 Precision' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 2: High-Cost Classification", dim_model_metrics[metric] = "PRECISION")
+		formatString: 0.0%
+		displayFolder: Model
+		lineageTag: d18fde81-3288-43b1-a8b1-f5cce6d1915b
+
+	measure 'Model 2 Recall' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 2: High-Cost Classification", dim_model_metrics[metric] = "RECALL")
+		formatString: 0.0%
+		displayFolder: Model
+		lineageTag: c6b1c2eb-e1e6-467f-8e1e-3156560a4d9e
+
+	measure 'Model 2 F1' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 2: High-Cost Classification", dim_model_metrics[metric] = "F1")
+		formatString: 0.000
+		displayFolder: Model
+		lineageTag: 9718fdf7-6984-4360-8753-9341655244af
+
+	measure 'Model 2 ROC AUC' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 2: High-Cost Classification", dim_model_metrics[metric] = "ROC AUC")
+		formatString: 0.000
+		displayFolder: Model
+		lineageTag: 5932ab50-d27b-4ba9-8b30-81f3ff1d6544
+
+	measure 'Model 2 PR AUC' = CALCULATE(SUM(dim_model_metrics[value]), dim_model_metrics[model] = "Model 2: High-Cost Classification", dim_model_metrics[metric] = "PR AUC")
+		formatString: 0.000
+		displayFolder: Model
+		lineageTag: fe9d2a44-c45f-471c-a624-8ad2bda6aa69
+
+	column model
+		dataType: string
+		lineageTag: 726710c5-15c1-4f36-af13-de9c0ce59ff9
+		summarizeBy: none
+		sourceColumn: model
+
+	column metric
+		dataType: string
+		lineageTag: 5251553f-0725-4b44-9527-ca887983e0f6
+		summarizeBy: none
+		sourceColumn: metric
+
+	column value
+		dataType: double
+		formatString: 0.0000
+		lineageTag: c17a5ad9-f246-4439-9b8c-a802e98d5672
+		summarizeBy: none
+		sourceColumn: value
+
+	partition dim_model_metrics = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "dim_model_metrics.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

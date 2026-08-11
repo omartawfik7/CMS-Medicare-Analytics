@@ -1,0 +1,5 @@
+expression DataFolder = "C:\Data\CMS-Medicare-Analytics\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true, List={}]
+	lineageTag: cdbbba5f-7f8e-4e8d-ae85-dd12c745abc7
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,19 @@
+table dim_specialty
+	lineageTag: e01b120e-f31e-4222-9a47-df9a09e960e9
+
+	column specialty
+		dataType: string
+		lineageTag: 4630ad0a-54eb-4db8-8c34-7f88c5a69c0d
+		summarizeBy: none
+		sourceColumn: specialty
+
+	partition dim_specialty = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(File.Contents(DataFolder & "dim_specialty.parquet"))
+				in
+					Source
+
+	annotation PBI_ResultType = Table
+

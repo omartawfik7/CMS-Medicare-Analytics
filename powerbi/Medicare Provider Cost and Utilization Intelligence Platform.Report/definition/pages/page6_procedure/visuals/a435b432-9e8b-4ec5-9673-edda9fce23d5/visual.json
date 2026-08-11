@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a435b432-9e8b-4ec5-9673-edda9fce23d5",
+  "position": {
+    "x": 270,
+    "y": 50,
+    "z": 0,
+    "width": 300,
+    "height": 150,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_provider_service_year"
+                    }
+                  },
+                  "Property": "Distinct Procedures Billed"
+                }
+              },
+              "queryRef": "fact_provider_service_year.Distinct Procedures Billed",
+              "nativeQueryRef": "Distinct Procedures Billed"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

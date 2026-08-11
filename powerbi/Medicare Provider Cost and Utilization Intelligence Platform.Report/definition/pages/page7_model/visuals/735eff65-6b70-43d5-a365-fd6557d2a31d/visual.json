@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "735eff65-6b70-43d5-a365-fd6557d2a31d",
+  "position": {
+    "x": 205,
+    "y": 280,
+    "z": 0,
+    "width": 195,
+    "height": 110,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_model_metrics"
+                    }
+                  },
+                  "Property": "Model 2 Recall"
+                }
+              },
+              "queryRef": "dim_model_metrics.Model 2 Recall",
+              "nativeQueryRef": "Model 2 Recall"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

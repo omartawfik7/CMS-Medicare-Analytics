@@ -1,0 +1,48 @@
+{
+  "name": "Medicare Provider Intelligence",
+  "dataColors": [
+    "#0B5A86",
+    "#1E8C96",
+    "#5FA8D3",
+    "#8FBF9F",
+    "#D9A441",
+    "#B8574C",
+    "#6E5C9E",
+    "#3D8B7A",
+    "#C97B4A",
+    "#4A6FA5"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1B1F23",
+  "tableAccent": "#0B5A86",
+  "good": "#3D8B7A",
+  "neutral": "#D9A441",
+  "bad": "#B8574C",
+  "maximum": "#0B5A86",
+  "center": "#EFEFEF",
+  "minimum": "#F4E8D8",
+  "null": "#B0B0B0",
+  "textClasses": {
+    "callout": { "fontSize": 32, "color": "#0B5A86", "fontFace": "Segoe UI Semibold" },
+    "title": { "fontSize": 14, "color": "#1B1F23", "fontFace": "Segoe UI Semibold" },
+    "header": { "fontSize": 12, "color": "#1B1F23", "fontFace": "Segoe UI Semibold" },
+    "label": { "fontSize": 10, "color": "#3A3F44", "fontFace": "Segoe UI" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": false }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#E3E6E8" } }, "radius": 4 }]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [{ "color": "#0B5A86", "fontSize": 28 }],
+        "categoryLabels": [{ "color": "#6B7177", "fontSize": 11 }]
+      }
+    },
+    "textbox": {
+      "*": {}
+    }
+  }
+}
